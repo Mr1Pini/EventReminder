@@ -1,7 +1,11 @@
 {
   "common": {
     "appName": "EventReminder",
-    "or": "або"
+    "or": "або",
+    "close": "Закрити",
+    "retry": "Спробувати ще раз",
+    "errorTitle": "Не вдалося завантажити дані",
+    "errorDescription": "Сталася помилка. Спробуйте ще раз або оновіть сторінку."
   },
   "metadata": {
     "title": "EventReminder",
@@ -26,7 +30,76 @@
   },
   "events": {
     "pageTitle": "Події",
-    "welcome": "Вітаємо, {name}!"
+    "newEvent": "Нова подія",
+    "editEvent": "Редагування події",
+    "search": {
+      "label": "Пошук подій",
+      "placeholder": "Пошук за назвою або описом"
+    },
+    "filters": {
+      "importanceLabel": "Фільтр за важливістю",
+      "statusLabel": "Фільтр за статусом",
+      "all": "Усі",
+      "normal": "Звичайні",
+      "important": "Важливі",
+      "critical": "Критичні",
+      "active": "Активні",
+      "completed": "Виконані"
+    },
+    "importance": {
+      "normal": "Звичайна",
+      "important": "Важлива",
+      "critical": "Критична"
+    },
+    "tabs": {
+      "label": "Період",
+      "upcoming": "Майбутні",
+      "past": "Минулі"
+    },
+    "day": {
+      "today": "Сьогодні",
+      "tomorrow": "Завтра"
+    },
+    "item": {
+      "overdue": "Прострочено",
+      "toggleCompleted": "Виконано: {title}"
+    },
+    "form": {
+      "title": "Назва",
+      "startsAt": "Дата й час",
+      "importance": "Важливість",
+      "description": "Опис",
+      "completed": "Виконано",
+      "save": "Зберегти",
+      "cancel": "Скасувати",
+      "delete": "Видалити"
+    },
+    "delete": {
+      "title": "Видалити подію?",
+      "description": "Подію «{title}» буде видалено назавжди.",
+      "confirm": "Видалити"
+    },
+    "pagination": {
+      "label": "Сторінки",
+      "previous": "Назад",
+      "next": "Вперед",
+      "page": "Сторінка {page} з {total}"
+    },
+    "empty": {
+      "noUpcomingTitle": "Немає майбутніх подій",
+      "noPastTitle": "Немає минулих подій",
+      "description": "Створіть подію, щоб вона з'явилась тут.",
+      "create": "Створити подію",
+      "noResultsTitle": "Нічого не знайдено",
+      "noResultsDescription": "Спробуйте змінити пошуковий запит або фільтри.",
+      "resetFilters": "Скинути фільтри"
+    },
+    "toast": {
+      "created": "Подію створено",
+      "updated": "Зміни збережено",
+      "deleted": "Подію видалено",
+      "statusUpdated": "Статус події оновлено"
+    }
   },
   "validation": {
     "nameTooShort": "Ім'я має містити щонайменше 2 символи",
@@ -35,7 +108,12 @@
     "emailInvalid": "Введіть коректний email",
     "passwordRequired": "Введіть пароль",
     "passwordTooShort": "Пароль має містити щонайменше 8 символів",
-    "passwordsMismatch": "Паролі не збігаються"
+    "passwordsMismatch": "Паролі не збігаються",
+    "titleRequired": "Введіть назву події",
+    "titleTooLong": "Назва має містити не більше 100 символів",
+    "descriptionTooLong": "Опис має містити не більше 1000 символів",
+    "startsAtRequired": "Вкажіть дату й час",
+    "startsAtInvalid": "Вкажіть коректну дату й час"
   },
   "errors": {
     "unauthorized": "Сесія завершилась. Увійдіть знову.",
@@ -43,6 +121,7 @@
     "emailTaken": "Користувач із таким email уже існує.",
     "invalidCredentials": "Неправильний email або пароль.",
     "oauthAccountNotLinked": "Цей email уже зареєстровано іншим способом входу.",
+    "eventNotFound": "Подію не знайдено.",
     "unknown": "Щось пішло не так. Спробуйте ще раз."
   }
 }
