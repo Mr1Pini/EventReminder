@@ -1,8 +1,11 @@
 import { clsx } from "clsx";
+import type { ReactNode } from "react";
 
 interface SegmentedOption<T extends string> {
   value: T;
-  label: string;
+  label: ReactNode;
+  // Обов'язково для опцій, де label — лише іконка
+  ariaLabel?: string;
 }
 
 interface SegmentedControlProps<T extends string> {
@@ -29,11 +32,12 @@ export function SegmentedControl<T extends string>({
       {...ariaProps}
     >
       {options.map((option) => (
-        <label key={option.value} className="relative">
+        <label key={option.value} title={option.ariaLabel} className="relative">
           <input
             type="radio"
             name={name}
             value={option.value}
+            aria-label={option.ariaLabel}
             checked={option.value === value}
             onChange={() => onChange(option.value)}
             className="peer sr-only"

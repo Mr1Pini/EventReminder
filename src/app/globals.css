@@ -32,6 +32,41 @@
   --danger: var(--importance-critical);
   --primary-strong-hover: color-mix(in srgb, var(--primary-strong) 90%, black);
   --danger-hover: color-mix(in srgb, var(--danger) 90%, black);
+  --overlay: color-mix(in srgb, var(--foreground) 40%, transparent);
+  color-scheme: light;
+}
+
+/*
+ * Темна тема (вмикається атрибутом data-theme на <html>, див. features/theme).
+ * Контраст тексту (≥ 4.5:1): foreground/background 16.3, foreground/surface 13.4,
+ * muted/surface 5.71, muted/background 6.96; текст на primary-strong 9.8 (hover 7.9),
+ * на danger 5.23 (hover світлішає, а не темнішає, тож контраст росте);
+ * посилання primary-strong на surface 9.9; помилки danger на surface 5.29;
+ * текст важливості на м'якому фоні: normal 7.52, important 10.39, critical 8.51.
+ * Як і у світлій темі, яскраві primary та importance-* — лише для заливок і смужок.
+ */
+[data-theme="dark"] {
+  --primary: #2dd4bf;
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --surface: #1e293b;
+  --border: #334155;
+  --primary-strong: #5eead4;
+  --primary-foreground: #042f2e;
+  --importance-normal: #2dd4bf;
+  --importance-normal-soft: #134e4a;
+  --importance-normal-text: #99f6e4;
+  --importance-important: #f59e0b;
+  --importance-important-soft: #451a03;
+  --importance-important-text: #fcd34d;
+  --importance-critical: #f87171;
+  --importance-critical-soft: #450a0a;
+  --importance-critical-text: #fca5a5;
+  --primary-strong-hover: color-mix(in srgb, var(--primary-strong) 90%, white);
+  --danger-hover: color-mix(in srgb, var(--danger) 90%, white);
+  --overlay: color-mix(in srgb, black 60%, transparent);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -55,6 +90,7 @@
   --color-danger: var(--danger);
   --color-primary-strong-hover: var(--primary-strong-hover);
   --color-danger-hover: var(--danger-hover);
+  --color-overlay: var(--overlay);
   --font-sans: var(--font-inter);
 }
 

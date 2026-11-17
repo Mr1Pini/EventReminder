@@ -28,7 +28,7 @@ export function Dialog({
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-40 bg-foreground/40" />
+        <DialogPrimitive.Overlay className="fixed inset-0 z-40 bg-overlay" />
         {/* На мобільному — майже на весь екран; від md — по центру, а max-h віднімає відступи inset-4 */}
         <DialogPrimitive.Content
           // Без опису явно знімаємо aria-describedby, інакше Radix попереджає в консолі

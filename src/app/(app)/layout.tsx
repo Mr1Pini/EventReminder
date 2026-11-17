@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { UserMenu } from "@/features/auth/components/UserMenu";
+import { ThemeSwitcher } from "@/features/theme/components/ThemeSwitcher";
 import { auth } from "@/lib/auth";
 
 export default async function AppLayout({ children }: LayoutProps<"/">) {
@@ -21,7 +22,10 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
           >
             {t("appName")}
           </Link>
-          <UserMenu userName={userName} />
+          <div className="flex items-center gap-2">
+            <ThemeSwitcher />
+            <UserMenu userName={userName} />
+          </div>
         </div>
       </header>
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
