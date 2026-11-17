@@ -1,9 +1,48 @@
 {
   "common": {
-    "appName": "EventReminder"
+    "appName": "EventReminder",
+    "or": "або"
   },
   "metadata": {
     "title": "EventReminder",
+    "titleTemplate": "%s · EventReminder",
     "description": "Плануйте події в календарі та не пропускайте важливе."
+  },
+  "auth": {
+    "loginTitle": "Вхід",
+    "loginDescription": "Увійдіть, щоб переглянути свої події.",
+    "registerTitle": "Реєстрація",
+    "registerDescription": "Створіть акаунт, щоб планувати події.",
+    "nameLabel": "Ім'я",
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "confirmPasswordLabel": "Підтвердження пароля",
+    "loginSubmit": "Увійти",
+    "registerSubmit": "Зареєструватися",
+    "googleSignIn": "Увійти через Google",
+    "noAccount": "Немає акаунта? <link>Зареєструватися</link>",
+    "hasAccount": "Уже маєте акаунт? <link>Увійти</link>",
+    "logout": "Вийти"
+  },
+  "events": {
+    "pageTitle": "Події",
+    "welcome": "Вітаємо, {name}!"
+  },
+  "validation": {
+    "nameTooShort": "Ім'я має містити щонайменше 2 символи",
+    "nameTooLong": "Ім'я має містити не більше 50 символів",
+    "emailRequired": "Введіть email",
+    "emailInvalid": "Введіть коректний email",
+    "passwordRequired": "Введіть пароль",
+    "passwordTooShort": "Пароль має містити щонайменше 8 символів",
+    "passwordsMismatch": "Паролі не збігаються"
+  },
+  "errors": {
+    "unauthorized": "Сесія завершилась. Увійдіть знову.",
+    "invalidInput": "Перевірте правильність заповнення полів.",
+    "emailTaken": "Користувач із таким email уже існує.",
+    "invalidCredentials": "Неправильний email або пароль.",
+    "oauthAccountNotLinked": "Цей email уже зареєстровано іншим способом входу.",
+    "unknown": "Щось пішло не так. Спробуйте ще раз."
   }
 }
