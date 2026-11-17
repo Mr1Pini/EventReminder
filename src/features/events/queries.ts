@@ -5,7 +5,7 @@ import {
   eventsSearchParamsSchema,
   type EventsSearchParams,
 } from "@/features/events/search-params";
-import type { EventDto, EventsPage } from "@/features/events/types";
+import type { CalendarEvents, EventsPage } from "@/features/events/types";
 import type { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { requireUserIdOrRedirect } from "@/lib/session";
@@ -64,13 +64,15 @@ export async function getEventsPage(
 
 export async function getCalendarEvents(
   rawParams: EventsSearchParams,
-): Promise<EventDto[]> {
+): Promise<CalendarEvents> {
   const userId = await requireUserIdOrRedirect();
   const params = eventsSearchParamsSchema.parse(rawParams);
 
-  return prisma.event.findMany({
+  const items = await prisma.event.findMany({
     where: buildFiltersWhere(userId, params),
     orderBy: { startsAt: "asc" },
     select: EVENT_SELECT,
   });
+
+  return { items, now: new Date() };
 }

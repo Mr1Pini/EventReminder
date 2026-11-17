@@ -9,7 +9,7 @@ import {
   useTransition,
   type ReactNode,
 } from "react";
-import { DEFAULT_TAB } from "@/features/events/constants";
+import { DEFAULT_TAB, DEFAULT_VIEW } from "@/features/events/constants";
 import {
   parseEventsSearchParams,
   type EventsSearchParams,
@@ -30,6 +30,7 @@ const EventsSearchParamsContext = createContext<EventsSearchParamsValue | null>(
 );
 
 const DEFAULT_PARAM_VALUES: Record<keyof EventsSearchParams, unknown> = {
+  view: DEFAULT_VIEW,
   importance: undefined,
   status: undefined,
   q: "",

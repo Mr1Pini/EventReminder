@@ -29,12 +29,12 @@ export function Dialog({
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-40 bg-foreground/40" />
-        {/* Висота віднімає відступи, щоб вікно не виходило за межі екрана на мобільному */}
+        {/* На мобільному — майже на весь екран; від md — по центру, а max-h віднімає відступи inset-4 */}
         <DialogPrimitive.Content
           // Без опису явно знімаємо aria-describedby, інакше Radix попереджає в консолі
           {...(description ? {} : { "aria-describedby": undefined })}
           onCloseAutoFocus={onCloseAutoFocus}
-          className="fixed inset-2 z-50 m-auto h-fit max-h-[calc(100dvh-1rem)] max-w-lg overflow-y-auto rounded-xl border border-border bg-surface p-6 shadow-lg"
+          className="fixed inset-2 z-50 overflow-y-auto rounded-xl border border-border bg-surface p-6 shadow-lg md:inset-4 md:m-auto md:h-fit md:max-h-[calc(100dvh-2rem)] md:max-w-lg"
         >
           <div className="mb-4 flex items-start justify-between gap-4">
             <DialogPrimitive.Title className="text-lg font-semibold text-foreground">

@@ -1,5 +1,16 @@
+/* Порядок шарів: стилі FullCalendar нижче за utilities, тож класи Tailwind їх перекривають */
+@layer theme, base, fullcalendar, components, utilities;
+
 @import "tailwindcss";
 
+/*
+ * Контраст тексту перевірено за WCAG AA (≥ 4.5:1):
+ * foreground/background 17.1, muted/surface 4.76, muted/background 4.55,
+ * білий на primary-strong 5.47 (hover 6.4), білий на danger 4.83,
+ * текст важливості на м'якому фоні: normal 6.73, important 6.37, critical 6.80.
+ * Hover-кольори кнопок темніші за базові: прозорість (/90) опускала контраст до 4.48.
+ * Яскраві primary та importance-* — лише для заливок, смужок і фокуса, не для тексту.
+ */
 :root {
   --primary: #0d9488;
   --background: #f8fafc;
@@ -19,6 +30,8 @@
   --importance-critical-soft: #fee2e2;
   --importance-critical-text: #991b1b;
   --danger: var(--importance-critical);
+  --primary-strong-hover: color-mix(in srgb, var(--primary-strong) 90%, black);
+  --danger-hover: color-mix(in srgb, var(--danger) 90%, black);
 }
 
 @theme inline {
@@ -40,6 +53,8 @@
   --color-importance-critical-soft: var(--importance-critical-soft);
   --color-importance-critical-text: var(--importance-critical-text);
   --color-danger: var(--danger);
+  --color-primary-strong-hover: var(--primary-strong-hover);
+  --color-danger-hover: var(--danger-hover);
   --font-sans: var(--font-inter);
 }
 

@@ -35,17 +35,25 @@ export function EventItem({ event, now }: EventItemProps) {
   }
 
   return (
-    <li className="flex items-start gap-3 rounded-xl border border-border bg-surface p-3">
-      <input
-        type="checkbox"
-        checked={isCompleted}
-        disabled={isPending}
-        onChange={(changeEvent) =>
-          handleToggleCompleted(changeEvent.target.checked)
-        }
-        aria-label={t("item.toggleCompleted", { title: event.title })}
-        className="mt-1 size-4 shrink-0 accent-primary-strong"
-      />
+    <li
+      className={clsx(
+        "flex items-start gap-3 rounded-xl border border-border p-3",
+        isCompleted ? "bg-background" : "bg-surface",
+      )}
+    >
+      {/* Обгортка збільшує зону дотику до 40 px, не змінюючи розмір самого чекбокса */}
+      <label className="-m-2 flex size-10 shrink-0 cursor-pointer items-center justify-center">
+        <input
+          type="checkbox"
+          checked={isCompleted}
+          disabled={isPending}
+          onChange={(changeEvent) =>
+            handleToggleCompleted(changeEvent.target.checked)
+          }
+          aria-label={t("item.toggleCompleted", { title: event.title })}
+          className="size-4 accent-primary-strong"
+        />
+      </label>
       <span
         aria-hidden="true"
         className={clsx(
@@ -56,10 +64,7 @@ export function EventItem({ event, now }: EventItemProps) {
       <button
         type="button"
         onClick={() => openEdit(event)}
-        className={clsx(
-          "flex min-w-0 flex-1 flex-col gap-1 rounded text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-          isCompleted && "opacity-60",
-        )}
+        className="flex min-w-0 flex-1 flex-col gap-1 rounded text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         <span className="flex flex-wrap items-center gap-2">
           <time
@@ -77,8 +82,9 @@ export function EventItem({ event, now }: EventItemProps) {
         </span>
         <span
           className={clsx(
-            "font-medium break-words text-foreground",
-            isCompleted && "line-through",
+            "font-medium break-words",
+            // Приглушення токеном muted, а не opacity: так контраст лишається не нижче AA
+            isCompleted ? "text-muted line-through" : "text-foreground",
           )}
         >
           {event.title}

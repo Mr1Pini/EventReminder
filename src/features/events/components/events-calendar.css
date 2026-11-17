@@ -1,0 +1,52 @@
+/* Стилі FullCalendar — в окремому шарі, нижче за utilities, щоб класи Tailwind на подіях їх перекривали */
+@import "@fullcalendar/react/skeleton.css" layer(fullcalendar);
+@import "@fullcalendar/react/themes/breezy/theme.css" layer(fullcalendar);
+
+/*
+ * Власна палітра Breezy замість stock-файлу palettes/*.css: кольори беремо з токенів застосунку,
+ * тож календар узгоджений з рештою інтерфейсу. Темну тему додає блок токенів у globals.css.
+ */
+:root {
+  --fc-breezy-primary: var(--primary-strong);
+  --fc-breezy-primary-over: var(--primary);
+  --fc-breezy-primary-foreground: var(--primary-foreground);
+
+  --fc-breezy-secondary: var(--fc-breezy-background);
+  --fc-breezy-secondary-over: var(--fc-breezy-faint);
+  --fc-breezy-secondary-border: var(--fc-breezy-strong-border);
+  --fc-breezy-secondary-foreground: var(--fc-breezy-strong-foreground);
+  --fc-breezy-secondary-icon: var(--fc-breezy-muted-foreground);
+  --fc-breezy-secondary-icon-over: var(--fc-breezy-strong-foreground);
+
+  --fc-breezy-event: var(--primary);
+  --fc-breezy-event-contrast: var(--primary-foreground);
+  --fc-breezy-background-event: var(--importance-normal-soft);
+  --fc-breezy-highlight: color-mix(in srgb, var(--primary) 10%, transparent);
+  --fc-breezy-now: var(--danger);
+
+  --fc-breezy-selected: var(--fc-breezy-strong);
+
+  --fc-breezy-popover: var(--surface);
+  --fc-breezy-popover-border: var(--border);
+
+  --fc-breezy-background: var(--surface);
+  --fc-breezy-faint: color-mix(in srgb, var(--foreground) 2%, transparent);
+  --fc-breezy-muted: color-mix(in srgb, var(--foreground) 5%, transparent);
+  --fc-breezy-strong: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --fc-breezy-stronger: color-mix(in srgb, var(--foreground) 14%, transparent);
+  --fc-breezy-strongest: color-mix(in srgb, var(--foreground) 18%, transparent);
+
+  --fc-breezy-foreground: var(--foreground);
+  /* Темніше за muted: тема ще й приглушує числа сусідніх місяців, і без цього контраст < 4.5 */
+  --fc-breezy-faint-foreground: color-mix(
+    in srgb,
+    var(--muted) 60%,
+    var(--foreground)
+  );
+  --fc-breezy-muted-foreground: var(--muted);
+  --fc-breezy-strong-foreground: var(--foreground);
+
+  --fc-breezy-border: var(--border);
+  --fc-breezy-muted-border: var(--border);
+  --fc-breezy-strong-border: var(--border);
+}

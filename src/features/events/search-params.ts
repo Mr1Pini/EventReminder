@@ -1,14 +1,17 @@
 import { z } from "zod";
 import {
   DEFAULT_TAB,
+  DEFAULT_VIEW,
   EVENT_STATUSES,
   EVENT_TABS,
+  EVENT_VIEWS,
   SEARCH_MAX_LENGTH,
 } from "@/features/events/constants";
 import { Importance } from "@/generated/prisma/enums";
 
 // Невалідні значення мовчки замінюються на типові
 export const eventsSearchParamsSchema = z.object({
+  view: z.enum(EVENT_VIEWS).catch(DEFAULT_VIEW),
   importance: z.enum(Importance).optional().catch(undefined),
   status: z.enum(EVENT_STATUSES).optional().catch(undefined),
   q: z

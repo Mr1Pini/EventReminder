@@ -25,7 +25,7 @@ export function SegmentedControl<T extends string>({
   return (
     <div
       role="radiogroup"
-      className="inline-flex flex-wrap gap-1 rounded-lg border border-border bg-surface p-1"
+      className="inline-flex shrink-0 gap-1 rounded-lg border border-border bg-surface p-1"
       {...ariaProps}
     >
       {options.map((option) => (
@@ -40,7 +40,8 @@ export function SegmentedControl<T extends string>({
           />
           <span
             className={clsx(
-              "block cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium text-muted transition-colors",
+              // Висота 40 px на мобільному — зручна ціль для дотику
+              "flex min-h-10 cursor-pointer items-center rounded-md px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors md:min-h-8",
               "hover:text-foreground",
               "peer-checked:bg-primary-strong peer-checked:text-primary-foreground",
               "peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary",

@@ -1,3 +1,10 @@
+import type { EventInput } from "@fullcalendar/react";
+import { clsx } from "clsx";
+import {
+  CALENDAR_EVENT_BASE_CLASS,
+  CALENDAR_EVENT_COMPLETED_CLASS,
+  IMPORTANCE_STYLES,
+} from "@/features/events/constants";
 import type { EventFormValues, EventPayload } from "@/features/events/schemas";
 import type {
   EventDto,
@@ -28,6 +35,22 @@ export function groupEventsByDay(events: EventDto[]): EventsDayGroup[] {
   }
 
   return [...groups.values()];
+}
+
+export function toCalendarEvent(event: EventDto, now: Date): EventInput {
+  const styles = IMPORTANCE_STYLES[event.importance];
+  const isCompleted = getEventState(event, now) === "completed";
+
+  return {
+    id: event.id,
+    title: event.title,
+    start: event.startsAt,
+    className: clsx(
+      CALENDAR_EVENT_BASE_CLASS,
+      styles.border,
+      isCompleted ? CALENDAR_EVENT_COMPLETED_CLASS : styles.badge,
+    ),
+  };
 }
 
 export function toEventPayload(values: EventFormValues): EventPayload {

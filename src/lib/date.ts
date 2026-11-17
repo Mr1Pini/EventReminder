@@ -1,4 +1,11 @@
-import { addDays, addHours, format, isSameDay, startOfHour } from "date-fns";
+import {
+  addDays,
+  addHours,
+  format,
+  isSameDay,
+  set,
+  startOfHour,
+} from "date-fns";
 import { uk } from "date-fns/locale/uk";
 
 const DATE_TIME_LOCAL_FORMAT = "yyyy-MM-dd'T'HH:mm";
@@ -34,4 +41,9 @@ export function getRelativeDay(date: Date, now: Date): RelativeDay | null {
 
 export function getNextFullHour(now: Date): Date {
   return addHours(startOfHour(now), 1);
+}
+
+/** Той самий день, але на початку вказаної години (локальний час). */
+export function setStartOfHour(date: Date, hour: number): Date {
+  return set(date, { hours: hour, minutes: 0, seconds: 0, milliseconds: 0 });
 }

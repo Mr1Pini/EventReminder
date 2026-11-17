@@ -18,6 +18,11 @@ export interface EventsPage {
   totalPages: number;
 }
 
+export interface CalendarEvents {
+  items: EventDto[];
+  now: Date;
+}
+
 export type EventState = "completed" | "overdue" | "upcoming";
 
 export interface EventsDayGroup {

@@ -17,7 +17,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link
             href="/events"
-            className="rounded text-lg font-semibold text-primary-strong focus-visible:outline-2 focus-visible:outline-primary"
+            className="inline-flex h-10 items-center rounded text-lg font-semibold text-primary-strong focus-visible:outline-2 focus-visible:outline-primary"
           >
             {t("appName")}
           </Link>
