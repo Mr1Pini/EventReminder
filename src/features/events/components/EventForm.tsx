@@ -22,6 +22,7 @@ import {
   toEventPayload,
 } from "@/features/events/utils";
 import { Importance } from "@/generated/prisma/enums";
+import { useErrorToast } from "@/hooks/use-error-toast";
 import { useValidationMessage } from "@/hooks/use-validation-message";
 
 interface EventFormProps {
@@ -40,7 +41,7 @@ export function EventForm({
   onDelete,
 }: EventFormProps) {
   const t = useTranslations("events");
-  const tRoot = useTranslations();
+  const showErrorToast = useErrorToast();
   const getValidationMessage = useValidationMessage();
   const {
     register,
@@ -66,7 +67,7 @@ export function EventForm({
       : await createEvent(payload);
 
     if (!result.success) {
-      toast.error(tRoot(result.errorKey));
+      showErrorToast(result.errorKey);
       return;
     }
     toast.success(t(event ? "toast.updated" : "toast.created"));

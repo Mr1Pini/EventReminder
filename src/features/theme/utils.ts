@@ -6,7 +6,7 @@ import {
 } from "@/features/theme/constants";
 
 export type ThemePreference = (typeof THEME_PREFERENCES)[number];
-export type ResolvedTheme = "light" | "dark";
+type ResolvedTheme = "light" | "dark";
 
 function isThemePreference(value: unknown): value is ThemePreference {
   return THEME_PREFERENCES.some((preference) => preference === value);

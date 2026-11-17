@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Dialog } from "@/components/ui/Dialog";
 import { deleteEvent } from "@/features/events/actions";
 import type { EventDto } from "@/features/events/types";
+import { useErrorToast } from "@/hooks/use-error-toast";
 
 interface DeleteEventDialogProps {
   event: EventDto;
@@ -20,14 +21,14 @@ export function DeleteEventDialog({
   onCloseAutoFocus,
 }: DeleteEventDialogProps) {
   const t = useTranslations("events");
-  const tRoot = useTranslations();
+  const showErrorToast = useErrorToast();
   const [isPending, startTransition] = useTransition();
 
   function handleConfirm() {
     startTransition(async () => {
       const result = await deleteEvent(event.id);
       if (!result.success) {
-        toast.error(tRoot(result.errorKey));
+        showErrorToast(result.errorKey);
         return;
       }
       toast.success(t("toast.deleted"));

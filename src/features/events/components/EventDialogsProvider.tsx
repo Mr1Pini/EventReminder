@@ -48,7 +48,7 @@ export function EventDialogsProvider({ children }: { children: ReactNode }) {
         initiatorRef.current = getActiveElement();
         setFormState({
           event: null,
-          initialStartsAt: date ?? getNextFullHour(new Date()),
+          initialStartsAt: date ?? getNextFullHour(),
         });
       },
       openEdit: (event) => {

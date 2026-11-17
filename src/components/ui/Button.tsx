@@ -35,7 +35,7 @@ export function getButtonClassName({
 }: ButtonStyleOptions = {}): string {
   return clsx(
     "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors",
-    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+    "focus-ring",
     "disabled:cursor-not-allowed disabled:opacity-60",
     VARIANT_CLASSES[variant],
     SIZE_CLASSES[size],

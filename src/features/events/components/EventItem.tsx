@@ -11,6 +11,7 @@ import { ImportanceBadge } from "@/features/events/components/ImportanceBadge";
 import { IMPORTANCE_STYLES } from "@/features/events/constants";
 import type { EventDto } from "@/features/events/types";
 import { getEventState } from "@/features/events/utils";
+import { useErrorToast } from "@/hooks/use-error-toast";
 import { formatTime } from "@/lib/date";
 
 interface EventItemProps {
@@ -20,7 +21,7 @@ interface EventItemProps {
 
 export function EventItem({ event, now }: EventItemProps) {
   const t = useTranslations("events");
-  const tRoot = useTranslations();
+  const showErrorToast = useErrorToast();
   const { openEdit } = useEventDialogs();
   const [isPending, startTransition] = useTransition();
   const state = getEventState(event, now);
@@ -29,7 +30,7 @@ export function EventItem({ event, now }: EventItemProps) {
   function handleToggleCompleted(nextIsCompleted: boolean) {
     startTransition(async () => {
       const result = await setEventCompleted(event.id, nextIsCompleted);
-      if (!result.success) toast.error(tRoot(result.errorKey));
+      if (!result.success) showErrorToast(result.errorKey);
       else toast.success(t("toast.statusUpdated"));
     });
   }
@@ -64,7 +65,7 @@ export function EventItem({ event, now }: EventItemProps) {
       <button
         type="button"
         onClick={() => openEdit(event)}
-        className="flex min-w-0 flex-1 flex-col gap-1 rounded text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        className="flex min-w-0 flex-1 flex-col gap-1 rounded text-left focus-ring"
       >
         <span className="flex flex-wrap items-center gap-2">
           <time

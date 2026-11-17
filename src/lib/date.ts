@@ -13,7 +13,7 @@ const DAY_KEY_FORMAT = "yyyy-MM-dd";
 const TIME_FORMAT = "HH:mm";
 const LONG_DATE_FORMAT = "EEEE, d MMMM";
 
-export type RelativeDay = "today" | "tomorrow";
+type RelativeDay = "today" | "tomorrow";
 
 /** Значення для `<input type="datetime-local">` у локальному часовому поясі. */
 export function toDateTimeLocalValue(date: Date): string {
@@ -39,7 +39,7 @@ export function getRelativeDay(date: Date, now: Date): RelativeDay | null {
   return null;
 }
 
-export function getNextFullHour(now: Date): Date {
+export function getNextFullHour(now: Date = new Date()): Date {
   return addHours(startOfHour(now), 1);
 }
 

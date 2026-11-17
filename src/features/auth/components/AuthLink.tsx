@@ -10,7 +10,7 @@ export function AuthLink({ href, children }: AuthLinkProps) {
   return (
     <Link
       href={href}
-      className="rounded font-medium text-primary-strong underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-primary"
+      className="rounded font-medium text-primary-strong underline-offset-4 focus-ring hover:underline"
     >
       {children}
     </Link>

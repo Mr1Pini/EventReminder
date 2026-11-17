@@ -38,6 +38,10 @@ const DEFAULT_PARAM_VALUES: Record<keyof EventsSearchParams, unknown> = {
   page: 1,
 };
 
+function isParamKey(key: string): key is keyof EventsSearchParams {
+  return key in DEFAULT_PARAM_VALUES;
+}
+
 // Спільний стан переходу потрібен, щоб тулбар міг приглушити список під час оновлення
 export function EventsSearchParamsProvider({
   children,
@@ -63,7 +67,7 @@ export function EventsSearchParamsProvider({
       for (const [key, value] of Object.entries(changes)) {
         const isDefault =
           value === undefined ||
-          value === DEFAULT_PARAM_VALUES[key as keyof EventsSearchParams];
+          (isParamKey(key) && value === DEFAULT_PARAM_VALUES[key]);
         if (isDefault) nextParams.delete(key);
         else nextParams.set(key, String(value));
       }
