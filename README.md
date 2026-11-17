@@ -164,6 +164,58 @@ Seed ідемпотентний: повторний запуск оновлює 
 | `npm run db:seed` | Наповнення БД тестовими даними |
 | `npm run db:studio` | Prisma Studio для перегляду даних |
 
+## Модель даних
+
+Схема описана в [`prisma/schema.prisma`](prisma/schema.prisma), міграція — в `prisma/migrations/`. У БД три таблиці та один enum.
+
+### `users` — користувачі
+
+| Поле | Тип | Опис |
+|---|---|---|
+| `id` | `String` (cuid), PK | Ідентифікатор |
+| `name` | `String?` | Ім'я |
+| `email` | `String`, унікальний | Email (зберігається в нижньому регістрі) |
+| `emailVerified` | `DateTime?` | Поле Auth.js; підтвердження email не реалізовано |
+| `image` | `String?` | Аватар (заповнюється для входу через Google) |
+| `passwordHash` | `String?` | Хеш bcrypt; `null` для користувачів, що входять лише через Google |
+| `createdAt`, `updatedAt` | `DateTime` | Службові позначки часу |
+
+### `accounts` — зв'язок із провайдером входу (Google)
+
+| Поле | Тип | Опис |
+|---|---|---|
+| `id` | `String` (cuid), PK | Ідентифікатор |
+| `userId` | `String`, FK → `users.id` | Власник; при видаленні користувача запис видаляється каскадно |
+| `type`, `provider`, `providerAccountId` | `String` | Тип акаунта, провайдер і ідентифікатор користувача в провайдері |
+| `refresh_token`, `access_token`, `id_token` | `Text?` | Токени провайдера |
+| `expires_at`, `token_type`, `scope`, `session_state` | `Int?` / `String?` | Службові поля OAuth |
+
+Пара `(provider, providerAccountId)` унікальна.
+
+### `events` — події
+
+| Поле | Тип | Опис |
+|---|---|---|
+| `id` | `String` (cuid), PK | Ідентифікатор |
+| `title` | `VarChar(100)` | Назва |
+| `description` | `Text?` | Опис (до 1000 символів перевіряється валідацією) |
+| `startsAt` | `Timestamptz(3)` | Дата й час початку в UTC |
+| `importance` | `Importance` | Важливість, за замовчуванням `NORMAL` |
+| `isCompleted` | `Boolean` | Позначка «виконано», за замовчуванням `false` |
+| `userId` | `String`, FK → `users.id` | Власник; каскадне видалення |
+| `createdAt`, `updatedAt` | `DateTime` | Службові позначки часу |
+
+Індекс `(userId, startsAt)` прискорює вибірку подій користувача за датою.
+
+### Enum `Importance`
+
+`NORMAL` (звичайна), `IMPORTANT` (важлива), `CRITICAL` (критична).
+
+### Зв'язки
+
+- `users` 1 → N `events`
+- `users` 1 → N `accounts`
+
 ## Структура проєкту
 
 ```
