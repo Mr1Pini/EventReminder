@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "EventReminder"
+  },
+  "metadata": {
+    "title": "EventReminder",
+    "description": "Плануйте події в календарі та не пропускайте важливе."
+  }
+}

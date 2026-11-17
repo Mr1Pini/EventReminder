@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #0d9488;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --primary-strong: #0f766e;
+  --primary-foreground: #ffffff;
+  --importance-normal: #0d9488;
+  --importance-normal-soft: #ccfbf1;
+  --importance-normal-text: #115e59;
+  --importance-important: #f59e0b;
+  --importance-important-soft: #fef3c7;
+  --importance-important-text: #92400e;
+  --importance-critical: #dc2626;
+  --importance-critical-soft: #fee2e2;
+  --importance-critical-text: #991b1b;
+  --danger: var(--importance-critical);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-importance-normal: var(--importance-normal);
+  --color-importance-normal-soft: var(--importance-normal-soft);
+  --color-importance-normal-text: var(--importance-normal-text);
+  --color-importance-important: var(--importance-important);
+  --color-importance-important-soft: var(--importance-important-soft);
+  --color-importance-important-text: var(--importance-important-text);
+  --color-importance-critical: var(--importance-critical);
+  --color-importance-critical-soft: var(--importance-critical-soft);
+  --color-importance-critical-text: var(--importance-critical-text);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
